@@ -103,53 +103,7 @@
     </head>
     <body>
         <header>
-            <div class="navbar">
-                <div class="logo-container">
-                    <img src="./img/LOGO.png" alt="Logo Sekolah" class="logo">
-                    <span class="school-name">SMP NEGERI 3 MALANG</span>
-                </div>
-                <div class="nav-links">
-                    <a href="1.home.html">Beranda</a>
-                    <div class="dropdown">
-                        <button class="dropbtn">Profil</button>
-                        <div class="dropdown-content">
-                            <a href="2.sejarah.html">Sejarah</a>
-                            <a href="3.profil-guru.html">Profil Guru</a>
-                            <a href="4.visimisi.html">Visi dan Misi</a>
-                        </div>
-                    </div>
-                    <div class="nav-links">
-                        <a href="5.sarpras.html">Sarana Prasarana</a>
-                    </div> 
-                    <div class="nav-links">
-                        <a href="6.ekstrakulikuler.html">Ekstrakurikuler</a>
-                    </div> 
-                    <div class="dropdown">
-                        <button class="dropbtn">Prestasi</button>
-                        <div class="dropdown-content">
-                            <a href="7.akademik.html">Akademik</a>
-                            <a href="8.non-akademik.html">Non Akademik</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Kegiatan</button>
-                        <div class="dropdown-content">
-                            <a href="9.kesiswaan.html">Kesiswaan</a>
-                            <a href="10.perayaan.html">Perayaan</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Berita dan Galeri</button>
-                        <div class="dropdown-content">
-                            <a href="11.berita.html">Berita</a>
-                            <a href="12.galeri.html">Galeri</a>
-                        </div>
-                    </div>
-                    <div class="nav-links">
-                        <a href="13.alumni.html">Alumni</a>
-                    </div> 
-                </div>
-            </div>
+            
             <div class="banner3 kesiswaan">
                 <div class="banner-content">
                     <h2>PRESTASI</h2>

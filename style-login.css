@@ -1,0 +1,92 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eafaf1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    border: 2px solid #2c6e49; 
+    border-radius: 10px;
+    padding: 30px 40px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #2c6e49; 
+    text-transform: uppercase;
+}
+
+.container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-align: left;
+    color: #2c6e49;
+}
+
+.container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #c7e2d5; /* Hijau muda */
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f7fdf9;
+    font-size: 16px;
+    color: #2c6e49;
+}
+
+.container input:focus {
+    border-color: #2c6e49;
+    outline: none;
+    box-shadow: 0 0 5px #c7e2d5;
+}
+
+.container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c6e49; 
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #4a7c59;
+}
+
+.container .link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #2c6e49;
+    text-decoration: none;
+}
+
+.container .link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .container h2 {
+        font-size: 20px;
+    }
+}
