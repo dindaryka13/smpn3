@@ -162,7 +162,9 @@
 }
 
 </style>
-<body><div class="hero profil">
+<body>
+    <header>
+        <div class="hero profil">
         <div class="overlay"></div>
         <h2>
          PROFIL
@@ -170,6 +172,7 @@
          PROFIL GURU SMP NEGERI 3 MALANG
         </h2>
        </div>
+</header>
        <div class="card-container">
         
         <div class="card">

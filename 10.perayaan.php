@@ -54,20 +54,20 @@
             .Kegiatan-kesiswaan h2 {
                 font-size: 28px;
                 margin-bottom: 30px; 
-                color: #2c3e50;
+                color:rgb(0, 0, 0);
                 line-height: 2; 
             }
 
-            .Kegiatan-kesiswaan .achievements-container {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px; 
-                margin-top: 20px;
-            }
+            
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Mengatur grid lebih responsif */
+            gap: 15px; /* Mengurangi jarak antar elemen */
+        }
 
             .Kegiatan-kesiswaan .achievement {
                 background-color: #ecf0f1;
-                padding: 20px;
+                padding: 0px;
                 border-radius: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 margin-top: 30px; 
@@ -141,32 +141,5 @@
                 </div>
             </div>
         </section>
-
-        <footer class="footer">
-            <div class="footer-title">
-                <h2>SMP NEGERI 3 MALANG</h2>
-                <p>Jl. Dr. Cipto No.20, 3, Klojen, Kec. Klojen, Kota Malang, Jawa Timur 65111</p>
-            </div>
-            <div class="footer-content">
-                <div class="footer-section contact">
-                    <h3>Kontak</h3>
-                    <p>Telp: (0341) 362612</p>
-                    <p>Email: smpn3mlg@smpn3-mlg.sch.id</p>
-                </div>
-                <div class="footer-section social">
-                    <h3>Sosial Media</h3>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div class="footer-section location">
-                    <h3>Lokasi</h3>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.504839634048!2d112.618639314773!3d-7.966620794262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629b1b1b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sSMP%20Negeri%203%20Malang!5e0!3m2!1sid!2sid!4v1634567890123!5m2!1sid!2sid" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-        </footer>
     </body>
 </html>

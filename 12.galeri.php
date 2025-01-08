@@ -45,94 +45,122 @@
                 font-size: 24px;
             }
             
-            .prestasi-akademik {
-                text-align: center;
-                padding: 10px 10px;
-            }
-
-            .prestasi-akademik h2 {
-                font-size: 36px;
-                font-weight: bold;
-                margin-bottom: 20px;
-                color: #000000;
-                transition: color 0.3s ease-in-out;
-            }
-
-            .prestasi-akademik h2:hover {
-                color: #000000; 
-            }
-
-            .prestasi-akademik .achievements-container {
+            .gallery {
                 display: flex;
-                justify-content: center;
-                gap: 50px 50px;
                 flex-wrap: wrap;
+                justify-content: center;
+                padding: 20px;
             }
 
-            .prestasi-akademik .achievement {
-                position: relative;
-                transition: transform 0.3s ease-in-out; 
+            .gallery-item {
+                background-color: #79cf9a;
+                color: rgb(0, 0, 0);
+                margin: 10px;
+                border-radius: 10px;
+                overflow: hidden;
+                width: calc(33% - 20px); 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
 
-            .prestasi-akademik .achievement img {
-                width: 400px;
+            .gallery-item img {
+                width: 100%;
                 height: auto;
-                border-radius: 50px;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-                transition: transform 0.3s, box-shadow 0.3s; 
             }
 
-            .prestasi-akademik .achievement img:hover {
-                transform: scale(1.1);
-                box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); 
+            .gallery-item p {
+                padding: 10px;
+                text-align: center;
+                margin: 0;
             }
-            .achievement {
-            flex: 0 1 calc(30% - 20px); /* 3 gambar di baris pertama */
-        }
 
-        .achievement:nth-child(4), .achievement:nth-child(5) {
-            flex: 0 1 calc(40% - 20px); /* 2 gambar di baris kedua */
-        }
-        .achievements-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Jarak horizontal dan vertikal antar gambar */
-}
+            @media (max-width: 768px) {
+                .gallery-item {
+                    width: calc(50% - 20px);
+                }
+            }
 
+            @media (max-width: 480px) {
+                .gallery-item {
+                    width: calc(100% - 20px); 
+                }
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            .gallery {
+                display: flex;
+                gap: 20px;
+                padding: 20px;
+            }
+            .gallery-item {
+                background-color: #fff3f3;
+                padding: 20px;
+                border-radius: 5px;
+                text-align: center;
+                width: 150px;
+            }
+            .add-item .plus-label {
+                display: block;
+                font-size: 36px;
+                cursor: pointer;
+            }
+
+            .toggle-form-checkbox {
+                display: none;
+            }
         </style>
     </head>
     <body>
         <header>
-            <div class="banner2 non-akademik">
+            <div class="banner3 kesiswaan">
                 <div class="banner-content">
-                    <h2>PRESTASI</h2>
-                    <h2>PRESTASI AKADEMIK SMP NEGERI 3 MALANG</h2>
+                    <h2>BERITA DAN GALERI</h2>
+                    <h2>GALERI SMP NEGERI 3 MALANG</h2>
                 </div>
         </header>
 
         <section class="prestasi-akademik">
-            <h2>Prestasi Akademik</h2>
-            <div class="achievements-container">
-            <div class="achievement">
-                <img src="./img/akademik1.png" alt="Yustira Fatimah">
-            </div>
-            <div class="achievement">
-                <img src="./img/akademik2.png" alt="Valenia Vieya Wijaya">
-            </div>
-            <div class="achievement">
-                <img src="./img/akademik3.png" alt="A'zahro Zifahusma'ani">
-            </div>
-            <div class="achievement">
-                <img src="./img/akademik4.png" alt="Benaca Almeera">
-            </div>
-            <div class="achievement">
-                <img src="./img/akademik5.png" alt="Dzakirah Thalita">
-            </div>
-        </div>
+            <h2>GALERI</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./img/galeri1.png" alt="Pementasan P5">
+                    <p>Pementasan P5</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri2.png" alt="Peringatan Hari Pahlawan">
+                    <p>Peringantan Hari Pahlawan</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri3.png" alt="Pramuka">
+                    <p>Pramuka</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri4.png" alt="Kegiatan Motivasi Alumni Mengajar">
+                    <p>Kegiatan Motivasi Alumni Mengajar</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri5.png" alt="Jumat Aksi">
+                    <p>Jumat Aksi</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri6.png" alt="Kegiatan ANBK">
+                    <p>Kegiatan ANBK</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri7.png" alt="Kegiatan MPLS">
+                    <p>Kegiatan MPLS</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri8.png" alt="Kegiatan Pembelajaran Dengan Bermain Game">
+                    <p>Kegiatan Pembelajaran Dengan Bermain Game</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="./img/galeri9.png" alt="Kegiatan Pembelajaran di Ruang Kelas">
+                    <p>Kegiatan Pembelajaran di Ruang Kelas</p>
+                </div>
+            </div>            
         </section>
-
-        </section>
-
     </body>
 </html>

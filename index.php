@@ -253,13 +253,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                     <a href="index.php?page=perayaan">Perayaan</a>
                 </div>
             </div>
-            <div class="dropdown">
-                <button class="dropbtn">Berita dan Galeri</button>
-                <div class="dropdown-content">
-                    <a href="index.php?page=berita">Berita</a>
-                    <a href="index.php?page=galeri">Galeri</a>
-                </div>
-            </div>
+            <div class="nav-links">
+                <a href="index.php?page=galeri">Galeri</a>
+            </div> 
             <div class="nav-links">
                 <a href="index.php?page=alumni">Alumni</a>
             </div> 
@@ -301,9 +297,6 @@ case 'akademik':
     break;
     case 'perayaan':
     include '10.perayaan.php';
-    break;
-    case 'berita':
-    include '11.berita.php';
     break;
     case 'galeri':
     include '12.galeri.php';

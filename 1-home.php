@@ -437,6 +437,7 @@ iframe {
 }
 
 </style>
+<header>
     <body class="home">
     <div class="hero home">
         <div class="overlay"></div>
@@ -447,6 +448,7 @@ iframe {
         </div>
     </div>
     </div>
+</header>
     <div class="welcome">
         <h1>SELAMAT DATANG</h1>
         <div class="welcome-content">
