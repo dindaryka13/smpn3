@@ -1,10 +1,15 @@
+<?php
+include 'config.php'; // Pastikan file koneksi database sudah ada
+
+$prestasi = mysqli_query($conn, "SELECT * FROM prestasi WHERE tingkat = 'Non Akademik' ORDER BY tanggal DESC");
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMP Negeri 3 Malang - Prestasi Non Akademik</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
@@ -75,6 +80,7 @@
             max-width: 1200px;
             margin: auto;
             padding: 0 20px;
+            margin-bottom: 80px;
         }
 
         .achievement {
@@ -149,48 +155,26 @@
             </div>
         </div>
     </header>
-
     <section class="prestasi-akademik">
-        <h2>Prestasi Non Akademik</h2>
-        <div class="achievements-container">
-            <div class="achievement">
-                <img src="./img/non_akademik1.png" alt="Ghaitsa Zahira">
-                <p class="nama">Ghaitsa Zahira</p>
-                <p>Lomba Tari Tradisional</p>
-                <p class="medali">Medali Emas 🥇</p>
-            </div>
-            <div class="achievement">
-                <img src="./img/non_akademik2.png" alt="Amir Marmora Reansyah">
-                <p class="nama">Amir Marmora Reansyah</p>
-                <p>Kejuaraan Taekwondo</p>
-                <p class="medali">Medali Perak 🥈</p>
-            </div>
-            <div class="achievement">
-                <img src="./img/non_akademik3.png" alt="Allmira Sukshma Negara">
-                <p class="nama">Allmira Sukshma Negara</p>
-                <p>Juara 1 Lomba Menyanyi</p>
-                <p class="medali">Medali Emas 🥇</p>
-            </div>
-            <div class="achievement">
-                <img src="./img/non_akademik4.png" alt="Marvel Putra Dinata">
-                <p class="nama">Marvel Putra Dinata</p>
-                <p>Kejuaraan Renang Nasional</p>
-                <p class="medali">Medali Perunggu 🥉</p>
-            </div>
-            <div class="achievement">
-                <img src="./img/non_akademik5.png" alt="Drupada Apta Gemilang">
-                <p class="nama">Drupada Apta Gemilang</p>
-                <p>Juara 2 Pencak Silat</p>
-                <p class="medali">Medali Perak 🥈</p>
-            </div>
-            <div class="achievement">
-                <img src="./img/non_akademik6.png" alt="Pramesti Wikrama Cetta Suryaputri">
-                <p class="nama">Pramesti Wikrama Cetta Suryaputri</p>
-                <p>Lomba Kaligrafi Nasional</p>
-                <p class="medali">Medali Emas 🥇</p>
-            </div>
-        </div>
-    </section>
+    <h2>Prestasi Akademik</h2>
+    <div class="achievements-container">
+        <?php
+        $prestasi_akademik = mysqli_query($conn, "SELECT * FROM prestasi WHERE tingkat='Non Akademik' ORDER BY tanggal DESC");
+        if (mysqli_num_rows($prestasi_akademik) > 0): 
+            while ($row = mysqli_fetch_assoc($prestasi_akademik)): ?>
+                <div class="achievement">
+                    <img src="<?= $row['foto'] ?>" 
+                         alt="<?= htmlspecialchars($row['judul']) ?>">
+                    <p class="judul"><?= htmlspecialchars($row['judul']) ?></p>
+                    <p><?= htmlspecialchars($row['deskripsi']) ?></p>   
+                    <p><b>Tanggal:</b> <?= date('d M Y', strtotime($row['tanggal'])) ?></p>
+                </div>
+            <?php endwhile; 
+        else: ?>
+            <p>Tidak ada prestasi akademik yang tersedia.</p>
+        <?php endif; ?>
+    </div>
+</section>
 
 </body>
 </html>

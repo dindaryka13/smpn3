@@ -1,22 +1,32 @@
-<html>
- <head>
-  <title>
-   SMP Negeri 3 Malang
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<?php
+require_once 'config.php';
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
+// Ambil data visi dan misi dari database
+$query = "SELECT * FROM visi_misi ORDER BY type ASC, id DESC";
+$result = mysqli_query($conn, $query);
 
-        /* Banner */
+$visi = "";
+$misi = "";
+
+while ($row = mysqli_fetch_assoc($result)) {
+    if ($row['type'] == 'visi') {
+        $visi .= "<p>" . htmlspecialchars($row['content']) . "</p>";
+    } else {
+        $misi .= "<p>" . htmlspecialchars($row['content']) . "</p>";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP Negeri 3 Malang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Banner tetap sama */
         .banner4 {
             position: relative;
             background: url(./img/PROFIL.JPG) no-repeat center center/cover;
@@ -52,92 +62,68 @@
             margin: 5px 0;
         }
 
+        /* Perbaikan CSS hanya untuk isi konten */
+        .content {
+            padding: 40px; /* Menambah jarak agar lebih nyaman */
+        }
 
-.content {
-    padding: 60px;
-}
-.content h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-.content p {
-    font-size: 16px;
-    line-height: 1.6;
-    text-align: left;
-}
-.content .section {
-    margin-bottom: 40px;
-}
-.content .section h3 {
-    display: flex;
-    align-items: center;
-    text-align: left;
-}
-.content .section h3 i {
-    font-size: 24px;
-    margin-right: 10px;
-}
+        .section {
+            margin-bottom: 30px; /* Jarak antar bagian */
+            padding: 20px; /* Jarak dalam kotak */
+            border-radius: 8px; /* Sudut lebih halus */
+            background: #f0f0f0; /* Warna latar belakang lebih terang */
+        }
 
-</style>
+        .section h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .section p {
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: #ddd;
+            margin: 10px 0;
+        }
+    </style>
+</head>
 <body>
+
 <header>
-        <div class="banner4">
-            <div class="banner-content">
-                <h2>PROFIL</h2>
-                <h2>VISI DAN MISI SMP NEGERI 3 MALANG</h2>
-            </div>
+    <div class="banner4">
+        <div class="banner-content">
+            <h2>PROFIL</h2>
+            <h2>VISI DAN MISI SMP NEGERI 3 MALANG</h2>
         </div>
-    </header>
-    <div class="content">
-        <div class="section">
-         <h3>
-          <i class="fas fa-1">
-          </i>
-          VISI
-         </h3>
-         <hr/>
-         <p>
-          Terwujudnya lulusan yang unggul dalam IPTEKS, terampil dan mandiri berlandaskan IMTAQ, berbudi pekerti luhur, dan berbudaya lingkungan.
-         </p>
+    </div>
+</header>
+
+<div class="content">
+    <div class="section">
+        <h3>VISI</h3>
+        <hr/>
+        <div id="visi-content">
+            <?= $visi ?>
         </div>
-        <div class="section">
-         <h3>
-          <i class="fas fa-1">
-          </i>
-          MISI
-         </h3>
-         <hr/>
-         <p>
-          1. Melaksanakan peningkatan keimanan dan ketaqwaan kepada Tuhan Yang Maha Esa.
-          <br/>
-          2. Melaksanakan pembelajaran dan pembimbingan yang efektif dan efisien.
-          <br/>
-          3. Melaksanakan pembelajaran berbasis teknologi informasi (TI), digitalisasi dan otomatisasi.
-          <br/>
-          4. Melaksanakan kegiatan ekstrakurikuler sesuai bakat dan minat.
-          <br/>
-          5. Menjalin kerjasama dan kemitraan dengan seluruh pemangku kepentingan (stake holder).
-          <br/>
-          6. Mewujudkan Manajemen Berbasis Sekolah (MBS) yang tangguh: Mandiri, Partisipasi, Kemitraan, Keterbukaan, Akuntabilitas.
-          <br/>
-          7. Melaksanakan peningkatan kompetensi SDM.
-          <br/>
-          8. Mengembangkan lingkungan sekolah yang bersih, hijau, dan sehat (clean, green, and healthy).
-          <br/>
-          9. Meningkatkan upaya pelestarian lingkungan sehat.
-          <br/>
-          10. Meningkatkan upaya pencegahan kerusakan dan pencemaran lingkungan.
-          <br/>
-          11. Meningkatkan upaya pencegahan inkungan.
-          <br/>
-          12. Melaksanakan kerjasama dengan sekolah lain baik nasional maupun internasional.
-          <br/>
-          13. Melaksanakan pengelolaan keuangan secara efektif dan efisien.
-          <br/>
-          14. Melaksanakan tata tertib sekolah secara konsisten dan konsekuen.
-         </p>
+    </div>
+
+    <div class="section">
+        <h3>MISI</h3>
+        <hr/>
+        <div id="misi-content">
+            <?= $misi ?>
         </div>
-       </div>
-       
-    </body>
-    </html>
+    </div>
+</div>
+</body>
+</html>

@@ -1,13 +1,12 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = ''; 
-$dbname = 'pesan_kesan';
+$db_host = 'localhost';
+$db_user = 'root';     // sesuaikan dengan username MySQL Anda
+$db_pass = '';         // sesuaikan dengan password MySQL Anda
+$db_name = 'smp3_website';  // nama database yang kita buat
 
-$conn = new mysqli($host, $user, $password, $dbname);
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
-// Cek koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
 ?>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMP Negeri 3 Malang</title>
+    <title>Pesan & Kesan Alumni - SMPN 3 Malang</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
     <style>
         body {
@@ -15,7 +15,7 @@
 
         .banner4 {
             position: relative;
-            background: url(./img/alumni.png) no-repeat center center/cover;
+            background: url(./img/bannerpesan.png) no-repeat center center/cover;
             height: 300px;
             display: flex;
             justify-content: center;
@@ -88,9 +88,9 @@
 
         /* Styling untuk daftar pesan & kesan */
         .message-container {
-            max-width: 1500px; /* Menentukan lebar maksimum */
-            margin: 30px auto; /* Tengah secara horizontal */
-            padding: 30px; /* Memberi ruang dalam */
+            max-width: 900px; 
+            margin: 30px auto; 
+            padding: 30px; 
             background: white;
             border-radius: 10px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -103,7 +103,7 @@
             margin-bottom: 20px;
         }
 
-        /* Grid layout untuk menampilkan 2 jawaban per baris */
+        /* Grid layout */
         .messages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -127,7 +127,6 @@
             border-radius: 5px;
         }
 
-        /* Styling tombol + */
         .add-button {
             display: inline-flex;
             align-items: center;
@@ -166,19 +165,13 @@
 </header>
 
 <main>
-    <!-- Form Input -->
     <div class="form-container" id="form-container">
         <h2>TULISKAN PESAN DAN KESAN MU SAAT BERSEKOLAH DI SMP NEGERI 3 MALANG</h2>
         <form action="submit.php" method="POST" enctype="multipart/form-data">
             <input type="text" name="nama" placeholder="Nama" required>
             <select name="year" required>
                 <option value="" disabled selected>Pilih Tahun Lulusan</option>
-                <?php
-                    $current_year = date("Y");
-                    for ($i = $current_year; $i >= 1970; $i--) {
-                        echo "<option value='{$i}'>{$i}</option>";
-                    }
-                ?>
+                <?php for ($i = date("Y"); $i >= 1970; $i--) echo "<option value='{$i}'>{$i}</option>"; ?>
             </select>
             <textarea name="pesan" placeholder="Pesan dan Kesan" required></textarea>
             <input type="file" name="foto" accept="image/*">
@@ -186,13 +179,7 @@
         </form>
     </div>
 
-    <!-- Menampilkan pesan & kesan alumni -->
     <div class="message-container">
-        <div style="text-align: right; margin-bottom: 10px;">
-            <a href="#form-container" class="add-button">
-                <span>+</span> Tambahkan Pesan
-            </a>
-        </div>
         <h2>Pesan & Kesan Alumni:</h2>
         <div class="messages-grid">
             <?php include 'view.php'; ?>

@@ -324,7 +324,7 @@ break;
                 <li><a href="index.php?page=ekskul">Ekstrakurikuler</a></li>
                 <li><a href="index.php?page=akademik">Prestasi Akademik</a></li>
                 <li><a href="index.php?page=non-akademik">Prestasi Non Akademik</a></li>
-                <li><a href="index.php?page=Login">Login</a></li>
+                
             </ul>
 </div>
         <div class="footer-section">

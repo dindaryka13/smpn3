@@ -1,49 +1,30 @@
 <?php
-require 'config.php';
-
-// Fungsi filter kata kasar
-function filterKata($text) {
-    $badWords = ["jelek", "bodoh", "kecewa", "buruk", "kasar", "*****"];
-    return str_ireplace($badWords, "***", $text);
-}
+include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'];
-    $lulusan_tahun = $_POST['year'];
+    $tahun_lulusan = $_POST['year'];
+    $pesan = $_POST['pesan'];
+    $foto_nama = "";
 
-    // Filter kata kasar sebelum disimpan
-    $pesan_kesan = filterKata($_POST['pesan']);
+    // Cek jika ada file yang diupload
+    if (!empty($_FILES['foto']['name'])) {
+        $target_dir = "uploads_pesan/";
+        $foto_nama = basename($_FILES["foto"]["name"]);
+        $target_file = $target_dir . $foto_nama;
 
-    $foto_path = "";
-
-    // Cek apakah ada file yang diunggah
-    if (!empty($_FILES["foto"]["name"])) {
-        $target_dir = "uploads/";
-        $foto_path = $target_dir . basename($_FILES["foto"]["name"]);
-
-        if (!move_uploaded_file($_FILES["foto"]["tmp_name"], $foto_path)) {
-            $foto_path = "";
-        }
+        move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
     }
 
     // Simpan ke database
-    $stmt = $conn->prepare("INSERT INTO pesan_kesan (nama, lulusan_tahun, pesan_kesan, kenangan) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("siss", $nama, $lulusan_tahun, $pesan_kesan, $foto_path);
+    $sql = "INSERT INTO pesan (nama, tahun_lulusan, pesan, foto) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("siss", $nama, $tahun_lulusan, $pesan, $foto_nama);
 
     if ($stmt->execute()) {
-        echo "<script>
-            alert('Pesan dan kesan berhasil ditambahkan!');
-            window.location.href = '13-alumni.php';
-        </script>";
+        header("Location: 13-alumni.php"); // Refresh halaman setelah submit
     } else {
-        echo "<script>
-            alert('Terjadi kesalahan, coba lagi!');
-            window.location.href = '13-alumni.php';
-        </script>";
+        echo "Terjadi kesalahan: " . $stmt->error;
     }
-
-    $stmt->close();
-    $conn->close();
-    exit();
 }
 ?>
