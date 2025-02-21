@@ -1,4 +1,12 @@
-<html>
+<?php
+require_once 'config.php';
+
+// Ambil data dari tabel berita atau data lainnya
+$query = "SELECT * FROM berita ORDER BY tanggal DESC";
+$result = mysqli_query($conn, $query);
+?>
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <title>SMP Negeri 3 Malang</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
@@ -132,50 +140,115 @@
             font-size: 14px;
         }
 
-        /* Gaya untuk Footer */
+        /* Gaya untuk Tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Footer */
         .footer {
             background-color: #007bff;
             color: white;
             text-align: center;
             padding: 20px;
-            margin-top: auto; /* Agar footer tetap di bawah */
+            margin-top: 40px;
             width: 100%;
         }
     </style>
 </head>
 <body>
 <header>
-        <div class="banner4">
-            <div class="banner-content">
-                <h2>PROFIL</h2>
-                <h2>SEJARAH SMP NEGERI 3 MALANG</h2>
-            </div>
-        </div>
-    </header>
-    <div class="content">
-        <div class="section">
-            <h1>Sejarah</h1>
-            <hr/>
-            <p>
-                SMP Negeri 3 berdiri pada tanggal 17 Maret 1950 dengan nama MULOWILHELMINA. Sebagai sekolah yang didirikan oleh pemerintah Belanda diperuntukkan untuk anak-anak Belanda dan pribumi. Diberi nama Wilhelmina karena waktu itu nama jalan tempat SMP Negeri 3 adalah jalan Wilhelmina. Kemudian pada tahun 1960 namanya berubah menjadi SMP 3 Negeri yang dimiliki sepenuhnya oleh pemerintah Republik Indonesia.
-            </p>
-            <p>
-                Keberadaannya diresmikan melalui Surat Keputusan Menteri Pendidikan, Pengajaran dan Kebudayaan Republik Indonesia No. 187/SK/B/III/1960, tanggal 25 Mei 1960. SMP Negeri 3 Malang mempunyai semboyan Bintaraloka, singkatan dari Bina Taruna Adi Loka, yang berarti tempat untuk menggodok pemuda-pemuda menjadi pribadi yang utama. Dengan semboyan tersebut diharapkan seluruh siswa SMP Negeri 3 Malang akan menjadi pribadi-pribadi yang unggul dalam karakter, terampil, mandiri dan berwawasan luas.
-            </p>
+    <div class="banner4">
+        <div class="banner-content">
+            <h2>PROFIL</h2>
+            <h2>SEJARAH SMP NEGERI 3 MALANG</h2>
         </div>
     </div>
-    <div class="container">
-        <h1>Dokumentasi Kegiatan SMP Negeri 3 Malang Tahun 90-an</h1>
-        <div class="gallery">
-            <div class="photo-container">
-                <img src="./img/sej1.jpg" alt="Dokumentasi 1">
-                <div class="caption">Wisata ke Candi Borobudur saat lulusan di Masa Kampanye.</div>
-            </div>
-            <div class="photo-container">
-                <img src="./img/sej2.jpg" alt="Dokumentasi 2">
-                <div class="caption">Acara lomba perayaan ulang tahun sekolah.</div>
-            </div>
+</header>
+
+<div class="content">
+    <div class="section">
+        <h1>Sejarah</h1>
+        <hr/>
+        <p>
+            SMP Negeri 3 berdiri pada tanggal 17 Maret 1950 dengan nama MULOWILHELMINA. Sebagai sekolah yang didirikan oleh pemerintah Belanda diperuntukkan untuk anak-anak Belanda dan pribumi. Diberi nama Wilhelmina karena waktu itu nama jalan tempat SMP Negeri 3 adalah jalan Wilhelmina. Kemudian pada tahun 1960 namanya berubah menjadi SMP 3 Negeri yang dimiliki sepenuhnya oleh pemerintah Republik Indonesia.
+        </p>
+        <p>
+            Keberadaannya diresmikan melalui Surat Keputusan Menteri Pendidikan, Pengajaran dan Kebudayaan Republik Indonesia No. 187/SK/B/III/1960, tanggal 25 Mei 1960. SMP Negeri 3 Malang mempunyai semboyan Bintaraloka, singkatan dari Bina Taruna Adi Loka, yang berarti tempat untuk menggodok pemuda-pemuda menjadi pribadi yang utama. Dengan semboyan tersebut diharapkan seluruh siswa SMP Negeri 3 Malang akan menjadi pribadi-pribadi yang unggul dalam karakter, terampil, mandiri dan berwawasan luas.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Dokumentasi Kegiatan SMP Negeri 3 Malang Tahun 90-an</h1>
+    <div class="gallery">
+        <div class="photo-container">
+            <img src="./img/sej1.jpg" alt="Dokumentasi 1">
+            <div class="caption">Wisata ke Candi Borobudur saat lulusan di Masa Kampanye.</div>
+        </div>
+        <div class="photo-container">
+            <img src="./img/sej2.jpg" alt="Dokumentasi 2">
+            <div class="caption">Acara lomba perayaan ulang tahun sekolah.</div>
         </div>
     </div>
+</div>
+
+<!-- Tabel Data CRUD -->
+<div class="container">
+    <h1>Data Berita</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Judul</th>
+                <th>Tanggal</th>
+                <th>Gambar</th>
+                <th>Konten</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $no = 1;
+            while ($row = mysqli_fetch_assoc($result)): ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= htmlspecialchars($row['judul']) ?></td>
+                    <td><?= htmlspecialchars($row['tanggal']) ?></td>
+                    <td>
+                        <?php if (!empty($row['gambar'])): ?>
+                            <img src="uploads_berita/<?= htmlspecialchars($row['gambar']) ?>" alt="Gambar" width="100">
+                        <?php else: ?>
+                            Tidak ada gambar
+                        <?php endif; ?>
+                    </td>
+                    <td><?= nl2br(htmlspecialchars($row['konten'])) ?></td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="footer">
+    &copy; 2025 SMP Negeri 3 Malang. Hak Cipta Dilindungi.
+</div>
 </body>
 </html>

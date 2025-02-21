@@ -38,7 +38,6 @@ $admin = mysqli_fetch_assoc($result);
     --transition-speed: 0.3s;
 }
 
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -107,7 +106,6 @@ body {
     border-left-color: var(--white);
 }
 
-/* Main Content Area */
 .main-content {
     margin-left: var(--sidebar-width);
     padding: var(--spacing-lg);
@@ -115,7 +113,6 @@ body {
     width: calc(100% - var(--sidebar-width));
 }
 
-/* Dashboard Header with Menu Toggle */
 .dashboard-header {
     background-color: var(--white);
     padding: var(--spacing-lg);
@@ -142,7 +139,6 @@ body {
     margin-bottom: var(--spacing-sm);
 }
 
-/* Stats Grid and Cards */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -178,7 +174,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
         width: 0;
@@ -202,7 +197,6 @@ body {
         width: var(--sidebar-width);
     }
 }
-/* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
         width: 0;
@@ -240,13 +234,15 @@ body {
 <body>
 
 <!-- Sidebar -->
-<div class="sidebar" id="sidebar">
+<div class="sidebar">
     <div class="logo">SMPN 3 Malang</div>
     <a href="dashboard.php"><i class="fas fa-home"></i> Dashboard</a>
     <a href="prestasi.php"><i class="fas fa-trophy"></i> Prestasi</a>
     <a href="galeri.php"><i class="fas fa-images"></i> Galeri</a>
     <a href="visi_misi.php"><i class="fas fa-bullseye"></i> Visi dan Misi</a>
-    <a href="kegiatan.php"><i class="fas fa-calendar-alt"></i> Kegiatan</a>
+    <a href="perayaan.php"><i class="fas fa-calendar-alt"></i> Kegiatan</a>
+    <a href="pesan_kesan.php"><i class="fas fa-comment-dots"></i> Pesan Kesan</a>
+    <a href="admin_berita.php"><i class="fas fa-comment-dots"></i>Berita</a>
     <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>
 

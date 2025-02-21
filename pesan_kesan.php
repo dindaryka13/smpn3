@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 
-// Proses hapus data
+
 if (isset($_GET['hapus'])) {
     $id_hapus = mysqli_real_escape_string($conn, $_GET['hapus']);
     $cek_data = mysqli_query($conn, "SELECT * FROM pesan WHERE id = '$id_hapus'");
@@ -16,7 +16,7 @@ if (isset($_GET['hapus'])) {
     }
 }
 
-// Ambil data pesan & kesan dari database
+
 $data_pesan = mysqli_query($conn, "SELECT * FROM pesan ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ $data_pesan = mysqli_query($conn, "SELECT * FROM pesan ORDER BY id DESC");
         }
 
         th {
-            background-color: #006400;
+            background-color: #265a3a;
             color: white;
         }
 

@@ -12,7 +12,7 @@ function uploadFoto($file) {
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $newFileName = $target_dir . uniqid() . '.' . $imageFileType;
     
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+    if (!in_array($imageFileType, ["jpg", "png", "jpeg"])) {
         return false;
     }
     
@@ -42,23 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['delete'])) {
         if (isset($_FILES['foto']) && $_FILES['foto']['size'] > 0) {
             $foto_path = uploadFoto($_FILES['foto']);
             if ($foto_path) {
-                $sql = "UPDATE galeri SET judul='$judul', deskripsi='$deskripsi', 
-                        kategori='$kategori', foto='$foto_path' WHERE id='$id'";
+                $sql = "UPDATE galeri SET judul='$judul', deskripsi='$deskripsi', kategori='$kategori', foto='$foto_path' WHERE id='$id'";
             } else {
-                $sql = "UPDATE galeri SET judul='$judul', deskripsi='$deskripsi', 
-                        kategori='$kategori' WHERE id='$id'";
+                $sql = "UPDATE galeri SET judul='$judul', deskripsi='$deskripsi', kategori='$kategori' WHERE id='$id'";
             }
         } else {
-            $sql = "UPDATE galeri SET judul='$judul', deskripsi='$deskripsi', 
-                    kategori='$kategori' WHERE id='$id'";
+            $sql = "UPDATE galeri SET judul='$judul', deskripsi='$deskripsi', kategori='$kategori' WHERE id='$id'";
         }
     } else { // Create
         $foto_path = "";
         if (isset($_FILES['foto'])) {
             $foto_path = uploadFoto($_FILES['foto']);
         }
-        $sql = "INSERT INTO galeri (judul, deskripsi, kategori, foto) 
-                VALUES ('$judul', '$deskripsi', '$kategori', '$foto_path')";
+        $sql = "INSERT INTO galeri (judul, deskripsi, kategori, foto) VALUES ('$judul', '$deskripsi', '$kategori', '$foto_path')";
     }
     
     mysqli_query($conn, $sql);
@@ -88,195 +84,124 @@ $galeri = mysqli_query($conn, "SELECT * FROM galeri ORDER BY created_at DESC");
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
             display: flex;
         }
+
         .main-content {
-    margin-left: 0;
-    width: 100%;
-}
-
-
-.form-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-
-
-.form-container h2 {
-    color: #2c6e49;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f0f0f0;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-}
-
-.form-control {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 15px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.form-control:focus {
-    border-color: #2c6e49;
-    box-shadow: 0 0 0 3px rgba(44, 110, 73, 0.1);
-    outline: none;
-}
-
-textarea.form-control {
-    resize: vertical;
-    min-height: 120px;
-}
-
-input[type="file"].form-control {
-    padding: 8px;
-    background-color: #f8f8f8;
-}
-
-.btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.3s, transform 0.1s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-}
-
-.btn:active {
-    transform: translateY(0);
-}
-
-.btn-primary {
-    background-color: #2c6e49;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #3d8c5f;
-}
-
-.btn-danger {
-    background-color: #e63946;
-    color: white;
-}
-
-.btn-danger:hover {
-    background-color: #f25b69;
-}
-
-/* Image Preview Styling */
-.thumbnail {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 4px;
-    display: block;
-    margin-top: 12px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Form Layout for Larger Screens */
-@media (min-width: 768px) {
-    .form-row {
-        display: flex;
-        gap: 20px;
-    }
-    
-    .form-row .form-group {
-        flex: 1;
-    }
-    
-    .form-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 15px;
-        margin-top: 30px;
-    }
-}
-
-/* Custom File Input Styling */
-.file-input-container {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    margin-top: 5px;
-}
-
-.file-input-label {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #f0f0f0;
-    color: #333;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.file-input-label:hover {
-    background-color: #e0e0e0;
-}
-
-.file-input-container input[type="file"] {
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.file-name {
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 14px;
-    color: #666;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 767px) {
-    .form-container {
-        padding: 20px 15px;
-    }
-    
-    .btn {
-        width: 100%;
-        margin-top: 15px;
-    }
-}
-        .table-container {
-            background-color: white;
+            margin-left: 0;
+            width: 100%;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+
+        .form-container, .table-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            color: #2c6e49;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #2c6e49;
+            outline: none;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #2c6e49;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #3d8c5f;
+        }
+
+        .btn-danger {
+            background-color: #e63946;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #f25b69;
         }
 
         .thumbnail {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #2c6e49;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
     </style>
 </head>
 <body>
@@ -294,13 +219,7 @@ input[type="file"].form-control {
             
             <div class="form-group">
                 <label>Judul Foto</label>
-                <input type="text" name="judul" class="form-control" required 
-                       value="<?php echo $edit_data ? $edit_data['judul'] : ''; ?>">
-            </div>
-
-            <div class="form-group">
-                <label>Deskripsi</label>
-                <textarea name="deskripsi" class="form-control" rows="4"><?php echo $edit_data ? $edit_data['deskripsi'] : ''; ?></textarea>
+                <input type="text" name="judul" class="form-control" required value="<?php echo $edit_data ? $edit_data['judul'] : ''; ?>">
             </div>
 
             <div class="form-group">
@@ -315,14 +234,15 @@ input[type="file"].form-control {
                 <?php echo $edit_data ? 'Update' : 'Simpan' ?>
             </button>
         </form>
-        <div class="table-container">
+    </div>
+
+    <div class="table-container">
         <h2>Data Galeri</h2>
-        <table border="1" width="100%" cellpadding="10" cellspacing="0">
+        <table>
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Judul</th>
-                    <th>Deskripsi</th>
                     <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
@@ -334,7 +254,7 @@ input[type="file"].form-control {
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo htmlspecialchars($row['judul']); ?></td>
-                        <td><?php echo nl2br(htmlspecialchars($row['deskripsi'])); ?></td>
+                        
                         <td>
                             <?php if (!empty($row['foto'])) : ?>
                                 <img src="<?php echo $row['foto']; ?>" class="thumbnail">
@@ -353,8 +273,6 @@ input[type="file"].form-control {
                 <?php endwhile; ?>
             </tbody>
         </table>
-    </div>
-
     </div>
 </div>
 

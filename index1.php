@@ -107,17 +107,6 @@ $admin = mysqli_fetch_assoc($result);
             width: calc(100% - var(--sidebar-width));
         }
 
-        /* Responsive Sidebar */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 0;
-                overflow: hidden;
-            }
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -131,7 +120,7 @@ $admin = mysqli_fetch_assoc($result);
     <a href="visi_misi.php"><i class="fas fa-bullseye"></i> Visi dan Misi</a>
     <a href="perayaan.php"><i class="fas fa-calendar-alt"></i> Kegiatan</a>
     <a href="pesan_kesan.php"><i class="fas fa-comment-dots"></i> Pesan Kesan</a>
-
+    <a href="admin_berita.php"><i class="fas fa-comment-dots"></i>Berita</a>
     <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>
 

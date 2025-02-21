@@ -468,7 +468,7 @@ iframe {
                 <div class="card-content">
                     <h3>- Profil</h3>
                     <p>Berisi informasi mengenai Sejarah, Profil Guru, dan Visi Misi SMP Negeri 3 Malang</p>
-                    <a href="2.sejarah.html">Klik untuk lihat selengkapnya</a>
+                    <a href="2-sejarah.php">Klik untuk lihat selengkapnya</a>
                 </div>
             </div>
             <div class="card">
@@ -476,7 +476,7 @@ iframe {
                 <div class="card-content">
                     <h3>- Sarana Prasarana</h3>
                     <p>Berisi informasi mengenai Sarana Prasarana yang ada di SMP Negeri 3 Malang seperti Laboratorium, Perpustakaan, UKS, dan Ruang Kelas.</p>
-                    <a href="5.sarpras.html">Klik untuk lihat selengkapnya</a>
+                    <a href="5-sarpras.php">Klik untuk lihat selengkapnya</a>
                 </div>
             </div>
             <div class="card">
@@ -484,7 +484,7 @@ iframe {
                 <div class="card-content">
                     <h3>- Ekstrakurikuler</h3>
                     <p>Berisi informasi mengenai kegiatan Ekstrakurikuler yang ada di SMP Negeri 3 Malang.</p>
-                    <a href="6.ekstrakulikuler.html">Klik untuk lihat selengkapnya</a>
+                    <a href="6-ekstrakulikuler.php">Klik untuk lihat selengkapnya</a>
                 </div>
             </div>
             <div class="card">
@@ -492,7 +492,7 @@ iframe {
                 <div class="card-content">
                     <h3>- Kegiatan</h3>
                     <p>Berisi informasi mengenai Kegiatan Perayaan dan Kegiatan Kesiswaan rutin/tahunan yang terlaksana di SMP Negeri 3 Malang.</p>
-                    <a href="9.kesiswaan.html">Klik untuk lihat selengkapnya</a>
+                    <a href="9.kesiswaan.php">Klik untuk lihat selengkapnya</a>
                 </div>
             </div>
             <div class="card">
@@ -500,7 +500,7 @@ iframe {
                 <div class="card-content">
                     <h3>- Prestasi</h3>
                     <p>Berisi informasi mengenai Prestasi Akademik maupun Non Akademik yang dimiliki siswa-siswi SMP Negeri 3 Malang.</p>
-                    <a href="7.akademik.html">Klik untuk lihat selengkapnya</a>
+                    <a href="7.akademik.php">Klik untuk lihat selengkapnya</a>
                 </div>
             </div>
             
@@ -509,7 +509,7 @@ iframe {
                 <div class="card-content">
                     <h3>- Berita dan Galeri</h3>
                     <p>Berisi Berita terkini tentang kegiatan, prestasi, maupun pengumuman yang di keluarkan secara resmi dari SMP Negeri 3 Malang.</p>
-                    <a href="11.berita.html">Klik untuk lihat selengkapnya</a>
+                    <a href="berita.php">Klik untuk lihat selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -520,7 +520,7 @@ iframe {
                 <div class="card-content">
                     
                     <p>Ruang khusus bagi para alumni untuk mengenang masa-masa sekolah, berbagi kesan dan pesan, serta menjalin kembali cerita yang tak terlupakan. Di sini Anda dapat menemukan kisah inspiratif, pesan penuh makna, dan foto kenangan dari alumni-alumni sebelumnya.</p>
-                    <a href="13.alumni.html">Klik untuk lihat selengkapnya</a>
+                    <a href="13-alumni.php">Klik untuk lihat selengkapnya</a>
                 </div>
             </div>
         </div>

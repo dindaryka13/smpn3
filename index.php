@@ -254,11 +254,15 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 </div>
             </div>
             <div class="nav-links">
+                <a href="index.php?page=berita">Berita</a>
+            </div>
+            <div class="nav-links">
                 <a href="index.php?page=galeri">Galeri</a>
             </div> 
             <div class="nav-links">
                 <a href="index.php?page=alumni">Alumni</a>
             </div>
+        
         </div>
     </div>
 </div>
@@ -298,6 +302,12 @@ case 'akademik':
     case 'galeri':
     include '12.galeri.php';
     break;  
+    case 'berita':
+        include 'berita.php';
+        break;
+        case 'detail_berita':
+            include 'detail_berita.php';
+            break;
     case 'alumni':
         include '13-alumni.php';
         break;

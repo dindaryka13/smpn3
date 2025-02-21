@@ -108,17 +108,15 @@ body {
   padding-bottom: 40px;
 }
 
-/* Main content area */
 .main-content {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 0 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
 }
 
-/* Form styling */
 .form-container {
   background: white;
   padding: 25px;
@@ -277,7 +275,7 @@ table tr:hover {
   border: 1px solid #dee2e6;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;

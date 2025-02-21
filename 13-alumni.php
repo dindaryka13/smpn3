@@ -42,49 +42,86 @@
         }
 
         /* Form Styling */
-        .form-container {
-            background: white;
-            max-width: 600px;
-            width: 100%;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin: 50px auto;
-        }
+.form-container {
+    background: white;
+    max-width: 700px; /* Lebih lebar */
+    width: 100%;
+    padding: 30px; /* Tambah padding */
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 50px auto;
+    animation: fadeIn 0.5s ease;
+}
 
-        .form-container h2 {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
+.form-container h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
 
-        form input, form textarea, form select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background: #f9f9f9;
-            font-size: 14px;
-        }
+form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    text-align: left;
+    color: #333;
+}
 
-        form button {
-            width: 100%;
-            background-color: #006400;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            padding: 10px 0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+form input, form textarea, form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-        form button:hover {
-            background-color: #004c00;
-        }
+form input:focus, form textarea:focus {
+    border-color: #006400;
+    background-color: #fff;
+    outline: none;
+}
+
+form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+form button, form input[type="submit"] {
+    width: 100%;
+    background-color: #006400;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+form button:hover, form input[type="submit"]:hover {
+    background-color: #004c00;
+    transform: translateY(-2px);
+}
+
+form input[type="file"] {
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 
         /* Styling untuk daftar pesan & kesan */
         .message-container {
@@ -167,16 +204,30 @@
 <main>
     <div class="form-container" id="form-container">
         <h2>TULISKAN PESAN DAN KESAN MU SAAT BERSEKOLAH DI SMP NEGERI 3 MALANG</h2>
-        <form action="submit.php" method="POST" enctype="multipart/form-data">
-            <input type="text" name="nama" placeholder="Nama" required>
-            <select name="year" required>
-                <option value="" disabled selected>Pilih Tahun Lulusan</option>
-                <?php for ($i = date("Y"); $i >= 1970; $i--) echo "<option value='{$i}'>{$i}</option>"; ?>
-            </select>
-            <textarea name="pesan" placeholder="Pesan dan Kesan" required></textarea>
-            <input type="file" name="foto" accept="image/*">
-            <button type="submit">Kirim</button>
-        </form>
+        <form action="submit.php" method="post" enctype="multipart/form-data">
+    <label for="nama">Nama:</label>
+    <input type="text" name="nama" required><br>
+
+    <label for="tahun_lulusan">Tahun Lulusan:</label>
+<select name="tahun_lulusan" required>
+    <option value="">-- Pilih Tahun --</option>
+    <?php
+    $tahunSekarang = date('Y');
+    for ($tahun = $tahunSekarang; $tahun >= 1980; $tahun--) {
+        echo "<option value='$tahun'>$tahun</option>";
+    }
+    ?>
+</select><br>
+
+    <label for="pesan">Pesan & Kesan:</label>
+    <textarea name="pesan" required></textarea><br>
+
+    <label for="foto">Foto (Opsional):</label>
+    <input type="file" name="foto"><br>
+
+    <input type="submit" value="Kirim">
+</form>
+
     </div>
 
     <div class="message-container">
